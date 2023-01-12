@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Contato extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome', 'ddd', 'telefone'];
+
+    public function excluir(){
+
+    }
+
+    public function alterar($novoNome, $novoDDD, $novoTelefone){
+
+    }
+
 }

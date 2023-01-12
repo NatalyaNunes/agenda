@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contatos', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('usuarios')->constrained(); /* para criar chave estrangeira */
+            $table->id(); /* para criar chave estrangeira ->constrained(); */
             $table->string('nome', 100);
             $table->integer('ddd');
             $table->string('telefone', 9);
