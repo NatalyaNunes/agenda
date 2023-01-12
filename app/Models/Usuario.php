@@ -11,6 +11,14 @@ class Usuario extends Model
 
     protected $fillable =['nome', 'edereco', 'senha'];
     protected $hidden = ['senha'];
+/**
+ * 
+ * @param string nome
+ * @param string endereco
+ * @param string senha
+ * @param string repetirSenha
+ * 
+ */
 
     public static function criarConta($nome, $endereco, $senha, $repetirSenha){
 
