@@ -11,6 +11,11 @@ class Usuario extends Model
 
     protected $fillable =['nome', 'edereco', 'senha'];
     protected $hidden = ['senha'];
+
+     public function contatos(){
+            return $this->belongsToMany(contato::class);
+    }
+
 /**
  * 
  * @param string nome

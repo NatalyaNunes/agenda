@@ -11,6 +11,10 @@ class Contato extends Model
 
     protected $fillable = ['nome', 'ddd', 'telefone'];
 
+    public function usuarios(){
+        return $this->belongsToMany(usuario::class);
+    }
+
     public function excluir(){
 
     }
