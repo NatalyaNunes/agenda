@@ -17,15 +17,27 @@ class Usuario extends Model
     }
 
 /**
- * 
  * @param string nome
  * @param string endereco
  * @param string senha
  * @param string repetirSenha
  * 
+ * @return Usuario
  */
 
     public static function criarConta($nome, $endereco, $senha, $repetirSenha){
+
+        if($senha == $repetirSenha){
+            $u = new Usuario([
+                'nome' => $nome,
+                'endereco' => $endereco,
+                'senha' => $senha
+            ]);
+
+            $u->save(); /**insert, vai adicionar na tabela */
+            return $u;
+        }
+            return null;
 
     }
 
@@ -35,6 +47,7 @@ class Usuario extends Model
 
     public function excluirConta(){
 
+        $this->delete(); /**para deletar da tabela */
     }
 
     public function deslogar(){
