@@ -17,10 +17,16 @@ class Contato extends Model
 
     public function excluir(){
 
+        $this->usuario()->detach();
+        $this->delete();
     }
 
     public function alterar($novoNome, $novoDDD, $novoTelefone){
 
+        $this->nome = $novoNome;
+        $this->ddd = $novoDDD;
+        $this->telefone = $novoTelefone;
+        $this->save();
     }
 
 }

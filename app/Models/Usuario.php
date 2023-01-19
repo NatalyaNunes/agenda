@@ -34,7 +34,7 @@ class Usuario extends Model
                 'senha' => $senha
             ]);
 
-            $u->save(); /**insert, vai adicionar na tabela */
+            $u->save(); /**insert, vai adicionar na tabela save irá salvar os dados*/
             return $u;
         }
             return null;
@@ -47,6 +47,7 @@ class Usuario extends Model
 
     public function excluirConta(){
 
+        $this->contatos()->detach();
         $this->delete(); /**para deletar da tabela */
     }
 
@@ -56,14 +57,18 @@ class Usuario extends Model
 
     public function adicionarContato(){
 
+        $c->save();
+        $this->contatos()->attache($c->id);
     }
 
     public function listarContatos(){
 
+        return $this->contatos()->orderBy('nome')->get(); /**sem os parenteses ele retorna apenas a lista */
     }
 
     public function buscar($termo){
 
+        return $this->contatos()->where('nome', 'like', "%$termo%")->get();
     }
 
 }
