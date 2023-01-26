@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuairo;
+use App\Models\Usuario;
 
 class LoginController extends Controller
 {
     public function login(){
         return view('login');
     }
-    public function cadastrar($request){
+    public function cadastrar(Request $request){
 
-        $ususario = usuario::criarConta($request-> nome, 
-        $request -> endereco, 
-        $request -> senha, $request -> repetirSenha);
+        $usuario = Usuario::criarConta($request->nome, 
+        $request->endereco, 
+        $request->senha, $request->repetirSenha);
         if($usuario != null){
             return redirect('/'); 
         }

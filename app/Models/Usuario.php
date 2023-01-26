@@ -9,7 +9,7 @@ class Usuario extends Model
 {
     use HasFactory;
 
-    protected $fillable =['nome', 'edereco', 'senha'];
+    protected $fillable =['nome', 'endereco', 'senha'];
     protected $hidden = ['senha'];
 
      public function contatos(){
