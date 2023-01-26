@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class Usuario extends Model
 {
@@ -31,7 +32,7 @@ class Usuario extends Model
             $u = new Usuario([
                 'nome' => $nome,
                 'endereco' => $endereco,
-                'senha' => $senha
+                'senha' => Hash::make($senha)
             ]);
 
             $u->save(); /**insert, vai adicionar na tabela save irá salvar os dados*/
@@ -43,6 +44,14 @@ class Usuario extends Model
 
     public static function logar($nome, $senha){
 
+        $usuario = Usuario::where('nome', $nome)->first();
+        if($usuario != null && Hash::check($senha, $usuario->senha)){
+            
+            session()->put('usuario', $usuario);
+            return true;
+        }
+
+        return false;
     }
 
     public function excluirConta(){
@@ -52,6 +61,8 @@ class Usuario extends Model
     }
 
     public function deslogar(){
+
+        session()->forget('usuario');
 
     }
 
