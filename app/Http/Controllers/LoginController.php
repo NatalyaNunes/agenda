@@ -31,4 +31,9 @@ class LoginController extends Controller
         }
         return redirect('/');
     }
+    public function deslogar(){
+        
+        Usuario::deslogar();
+        return redirect('/');
+    }
 }

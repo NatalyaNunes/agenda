@@ -19,3 +19,5 @@ Route::get('/', [LoginController::class,"login"]);;
 Route::post('usuario/cadastrar',[LoginController::class, "cadastrar"]);
 
 Route::post('/usuario/login',[LoginController::class, "autenticar"]); 
+
+Route::get('/usuario/deslogar', [LoginController::class, "deslogar"]);
