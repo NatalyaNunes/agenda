@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AgendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,14 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [LoginController::class,"login"]);;
 
-Route::post('usuario/cadastrar',[LoginController::class, "cadastrar"]);
+Route::post('/usuario/cadastrar',[LoginController::class, 'cadastrar']);
 
-Route::post('/usuario/login',[LoginController::class, "autenticar"]); 
+Route::post('/usuario/login',[LoginController::class, 'autenticar']); 
 
-Route::get('/usuario/deslogar', [LoginController::class, "deslogar"]);
+Route::get('/usuario/deslogar', [LoginController::class, 'deslogar']);
+
+/** AGenda */
+
+Route::get('/agenda/minha', [AgendaController::class, 'minha'])->middleware('somenteUsuarios');
+
+Route::post('/contato/cadastrar', [AgendaController::class, 'novoContato'])->middleware('somenteUsuarios');

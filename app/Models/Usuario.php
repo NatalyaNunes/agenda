@@ -66,10 +66,10 @@ class Usuario extends Model
 
     }
 
-    public function adicionarContato(){
+    public function adicionarContato($c){
 
         $c->save();
-        $this->contatos()->attache($c->id);
+        $this->contatos()->attach($c->id);
     }
 
     public function listarContatos(){

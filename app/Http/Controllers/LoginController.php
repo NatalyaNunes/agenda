@@ -27,7 +27,7 @@ class LoginController extends Controller
         $senha = $request->senha;
 
         if(Usuario::logar($nome , $senha)){
-            return view('agenda');
+            return redirect('/agenda/minha');
         }
         return redirect('/');
     }
